@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.2 — 2026-10-19
+
+- Seal local macOS app/widget bundles with ad-hoc signatures and apply the widget sandbox entitlement required by PluginKit.
+- Transfer snapshots through an atomic shared-container file instead of preferences that reject writes from the Mac host.
+- Add a local installer that registers the containing app and widget from the user’s Applications folder.
+- Distinguish local widget builds from Apple-team-signed iCloud builds in settings.
+- Confirm local PluginKit registration. Local shared-container writes remain denied (Cocoa error 513); quota display in the widget is not yet validated.
+
 ## 0.1.1 — 2026-10-19
 
 - Fix the macOS menu bar showing only an icon: use a text-only menu bar item so all remaining quota percentages stay visible without clicking.

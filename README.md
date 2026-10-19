@@ -2,14 +2,14 @@
 
 Native SwiftUI quota monitor for **macOS 14+** and **iOS/iPadOS 17+**. View every quota window directly in the macOS menu bar, with small and medium WidgetKit widgets and an optional iCloud companion.
 
-**Version: 0.1.1 — public source preview.** The interface is currently in French.
+**Version: 0.1.2 — public source preview.** The interface is currently in French.
 
 QuotaBar displays the remaining **ChatGPT subscription quotas used by Codex**, not an exact token balance or every limit across ChatGPT features. Reading quotas does not start a model turn.
 
 ## macOS
 
 1. Open `QuotaBar.xcodeproj` and select the **QuotaBar-macOS** scheme.
-2. Configure Apple signing below to use widgets and iCloud, then run the app.
+2. For a local macOS installation, run `./Scripts/install-macos.sh`. This signs the bundles locally, installs the app in `~/Applications`, registers the widget, and launches the app. Apple-team signing is required for iCloud; see below.
 3. The app detects an installed official CLI and uses its existing local session. Choose another executable in settings if needed. The sign-in button opens the official browser flow.
 4. Each window appears directly in the menu bar, for example **5 h 72 % · 7 j 84 %**, with its remaining percentage. Quotas refresh at launch, on demand and 30 seconds after each automatic read, even with the panel closed. This is near real time, subject to service update delays.
 5. Add desktop widgets using **Edit Widgets → QuotaBar**. Widgets display the `codex` group, or the first available group, independently of the group selected for the menu bar.
@@ -26,7 +26,11 @@ iCloud delivery is asynchronous. The iOS app receives changes while active and w
 
 ## Apple signing and capabilities
 
-Unsigned builds validate compilation. They **do not validate App Groups, iCloud, physical-device installation or widget registration**.
+`Scripts/check.sh` uses unsigned builds to validate compilation only. Such bundles lack effective sandbox entitlements, and PluginKit rejects the widget.
+
+`Scripts/build-macos.sh` instead applies local ad-hoc signatures, including the widget sandbox entitlement. `Scripts/install-macos.sh` registers the containing app and widget from `~/Applications`. Local PluginKit registration has been verified without an Apple development certificate. This is not a notarized distribution build and does not enable iCloud; gallery rendering still needs functional confirmation. On the test Mac, shared-container writes were denied with Cocoa error 513 under the local signature, so the local widget cannot yet be considered a working quota display. A properly provisioned Apple-team build is the next path to validate shared-container access.
+
+For iCloud, iPhone installation and a provisioned distribution build, configure Apple-team signing:
 
 Choose the same Apple Developer team for all four targets in **Signing & Capabilities**:
 
@@ -48,7 +52,7 @@ Launch at login uses `SMAppService`. Enable it from a stable, signed app install
 
 - QuotaBar communicates with the installed CLI through local standard input/output using the official account protocol. It does not directly read `auth.json` or store passwords or authentication tokens.
 - The local CLI manages its own authentication outside this repository.
-- Quota snapshots and preferences are stored in the app's local preferences/App Group. Optional iCloud synchronization contains quota values and timestamps only.
+- Quota snapshots are written atomically to a JSON file in the App Group container; app preferences remain local. Optional iCloud synchronization contains quota values and timestamps only.
 - Build products, local environments, authentication files, signing material, user-specific Xcode metadata and diagnostics are excluded from Git.
 - The optional `probe.sh` script prints remaining quota values, not authentication tokens. Do not publish your personal probe output or local diagnostic files.
 
@@ -71,10 +75,16 @@ swift test
 ./Scripts/check.sh
 ```
 
-Build an unsigned local macOS app:
+Build a locally signed macOS app (iCloud disabled):
 
 ```sh
 ./Scripts/build-macos.sh
+```
+
+Install/update this local build, register its widget and launch it:
+
+```sh
+./Scripts/install-macos.sh
 ```
 
 Read the current local account's quotas:
@@ -104,7 +114,7 @@ The project generator rewrites project settings and entitlements. Preserve any c
 
 Fourteen unit/transport tests pass. Unsigned macOS and iOS Simulator builds pass, including both widget extensions. Automatic reading and local quota persistence have been verified in the running Mac app with the panel closed.
 
-Widget registration, cross-device iCloud synchronization, physical iPhone installation, interactive sign-in and launch at login still require validation with configured Apple signing. No signed/notarized binary is distributed. See [VALIDATION.md](VALIDATION.md) for the detailed development record and [CHANGELOG.md](CHANGELOG.md) for version history.
+Local widget registration is now verified. Actual widget rendering/data display, cross-device iCloud synchronization, physical iPhone installation, interactive sign-in and launch at login still require functional validation. iCloud and iPhone deployment additionally require configured Apple-team signing. No signed/notarized binary is distributed. See [VALIDATION.md](VALIDATION.md) for the detailed development record and [CHANGELOG.md](CHANGELOG.md) for version history.
 
 ## References
 

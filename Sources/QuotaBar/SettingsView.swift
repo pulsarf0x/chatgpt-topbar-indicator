@@ -16,6 +16,11 @@ struct SettingsView: View {
             Form {
                 Section("Appareils") {
                     Toggle("Synchroniser avec iCloud", isOn: $model.syncEnabled)
+                        .disabled(!model.cloudSyncAvailable)
+                    if !model.cloudSyncAvailable {
+                        Text("Cette compilation locale permet l’enregistrement du widget macOS. La synchronisation iCloud nécessite une compilation signée avec ton équipe Apple.")
+                            .font(.caption).foregroundStyle(.secondary)
+                    }
                     Text("Seuls les quotas et leur date de lecture sont synchronisés. Le Mac doit rester ouvert avec QuotaBar actif pour publier de nouvelles valeurs. La réception iCloud peut être différée.")
                         .font(.caption).foregroundStyle(.secondary)
                 }

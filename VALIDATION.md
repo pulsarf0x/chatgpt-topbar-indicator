@@ -43,3 +43,13 @@ Contrôle du rafraîchissement automatique : version finale relancée, lectures 
 The 0.1.0 runtime checks confirmed successful quota reads and cache updates but did not validate visible text. A user report confirmed that only the icon appeared. The image-based MenuBarExtra initializer uses its title for accessibility; 0.1.1 uses the text-only initializer instead.
 
 The macOS Release build succeeded, version 0.1.1 was launched in place of the previous instance, and live quota reads succeeded. Automated native UI inspection was unreliable and did not provide visual confirmation of the final menu bar. User confirmation remains required for the visible result (issue #1).
+
+## 0.1.2 — local macOS widget registration
+
+PluginKit rejected unsigned build outputs with “plug-ins must be sandboxed”. The local build now seals both bundles with ad-hoc signatures and applies the widget sandbox entitlement. The local app omits the provisioned iCloud entitlement and disables its iCloud toggle.
+
+A signed copy installed in the user’s Applications directory and registered with Launch Services/PluginKit was accepted as `net.plumia.QuotaBar.widgets`. The containing app was launched and successfully read live quotas. No Apple signing identity was available or required for this local registration test. Registry acceptance does not itself prove gallery rendering or shared quota display; functional confirmation is still pending.
+
+The local installer was run successfully for version 0.1.2; signatures verify and PluginKit lists one installed extension. Quota reads succeed. An atomic shared-container JSON transport was added with read-back verification and an explicit in-app error on failure. On this Mac, writes fail with NSCocoaErrorDomain code 513 (permission denied). Therefore registration is fixed, but a working widget quota display is not claimed. Apple-team/App Group provisioning or an explicit system authorization needs resolution before functional acceptance. The available code-signing identity list is empty.
+
+Fourteen tests pass. macOS Release build/local installation and iOS Simulator builds succeed. No widget gallery screenshot or on-desktop rendering was verified.

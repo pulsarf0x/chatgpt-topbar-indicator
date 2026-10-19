@@ -11,6 +11,9 @@ final class UsageModel {
     static let shared = UsageModel()
     var displayDate = Date.now
     var snapshot = SnapshotStore.load()
+    var cloudSyncAvailable: Bool {
+        Bundle.main.object(forInfoDictionaryKey: "QuotaBarLocalBuild") as? Bool != true
+    }
     var isRefreshing = false
     var isLoggingIn = false
     var error: String?
@@ -34,6 +37,7 @@ final class UsageModel {
     init() {
         selectedBucketID = UserDefaults.standard.string(forKey: "selectedBucket") ?? "codex"
         syncEnabled = UserDefaults.standard.bool(forKey: "cloudSync")
+            && (Bundle.main.object(forInfoDictionaryKey: "QuotaBarLocalBuild") as? Bool != true)
         #if os(macOS)
         executablePath = UserDefaults.standard.string(forKey: "executablePath") ?? CodexClient.detectedExecutable
         #else
@@ -89,7 +93,9 @@ final class UsageModel {
             displayDate = .now
             snapshot = value
             error = nil
-            SnapshotStore.save(value)
+            if !SnapshotStore.save(value) {
+                error = "Quotas lus, mais le stockage partagé avec le widget est indisponible."
+            }
             if syncEnabled { publish(value) }
         } catch {
             logger.error("Account operation failed: \(error.localizedDescription, privacy: .private)")
@@ -127,7 +133,7 @@ final class UsageModel {
     #endif
 
     func synchronize() {
-        guard syncEnabled else { return }
+        guard syncEnabled, cloudSyncAvailable else { return }
         NSUbiquitousKeyValueStore.default.synchronize()
         #if os(macOS)
         if let snapshot { publish(snapshot) }
