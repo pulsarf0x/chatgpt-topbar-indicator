@@ -53,3 +53,5 @@ A signed copy installed in the user’s Applications directory and registered wi
 The local installer was run successfully for version 0.1.2; signatures verify and PluginKit lists one installed extension. Quota reads succeed. An atomic shared-container JSON transport was added with read-back verification and an explicit in-app error on failure. On this Mac, writes fail with NSCocoaErrorDomain code 513 (permission denied). Therefore registration is fixed, but a working widget quota display is not claimed. Apple-team/App Group provisioning or an explicit system authorization needs resolution before functional acceptance. The available code-signing identity list is empty.
 
 Fourteen tests pass. macOS Release build/local installation and iOS Simulator builds succeed. No widget gallery screenshot or on-desktop rendering was verified.
+
+User confirmation: after closing and reopening Edit Widgets, QuotaBar appears in the macOS gallery. This validates gallery visibility; on-desktop quota rendering remains unvalidated because shared-container writes are still denied.

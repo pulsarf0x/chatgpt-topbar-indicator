@@ -28,7 +28,7 @@ iCloud delivery is asynchronous. The iOS app receives changes while active and w
 
 `Scripts/check.sh` uses unsigned builds to validate compilation only. Such bundles lack effective sandbox entitlements, and PluginKit rejects the widget.
 
-`Scripts/build-macos.sh` instead applies local ad-hoc signatures, including the widget sandbox entitlement. `Scripts/install-macos.sh` registers the containing app and widget from `~/Applications`. Local PluginKit registration has been verified without an Apple development certificate. This is not a notarized distribution build and does not enable iCloud; gallery rendering still needs functional confirmation. On the test Mac, shared-container writes were denied with Cocoa error 513 under the local signature, so the local widget cannot yet be considered a working quota display. A properly provisioned Apple-team build is the next path to validate shared-container access.
+`Scripts/build-macos.sh` instead applies local ad-hoc signatures, including the widget sandbox entitlement. `Scripts/install-macos.sh` registers the containing app and widget from `~/Applications`. Local PluginKit registration has been verified without an Apple development certificate. This is not a notarized distribution build and does not enable iCloud; gallery visibility has been confirmed by the user. On the test Mac, shared-container writes were denied with Cocoa error 513 under the local signature, so the local widget cannot yet be considered a working quota display. A properly provisioned Apple-team build is the next path to validate shared-container access.
 
 For iCloud, iPhone installation and a provisioned distribution build, configure Apple-team signing:
 
@@ -114,7 +114,7 @@ The project generator rewrites project settings and entitlements. Preserve any c
 
 Fourteen unit/transport tests pass. Unsigned macOS and iOS Simulator builds pass, including both widget extensions. Automatic reading and local quota persistence have been verified in the running Mac app with the panel closed.
 
-Local widget registration is now verified. Actual widget rendering/data display, cross-device iCloud synchronization, physical iPhone installation, interactive sign-in and launch at login still require functional validation. iCloud and iPhone deployment additionally require configured Apple-team signing. No signed/notarized binary is distributed. See [VALIDATION.md](VALIDATION.md) for the detailed development record and [CHANGELOG.md](CHANGELOG.md) for version history.
+Local widget registration is now verified. Gallery visibility is confirmed; on-desktop quota display, cross-device iCloud synchronization, physical iPhone installation, interactive sign-in and launch at login still require functional validation. iCloud and iPhone deployment additionally require configured Apple-team signing. No signed/notarized binary is distributed. See [VALIDATION.md](VALIDATION.md) for the detailed development record and [CHANGELOG.md](CHANGELOG.md) for version history.
 
 ## References
 
