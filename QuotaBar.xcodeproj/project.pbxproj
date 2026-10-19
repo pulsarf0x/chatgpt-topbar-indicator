@@ -1,0 +1,651 @@
+// !$*UTF8*$!
+{
+	"archiveVersion" = "1";
+	"classes" = {
+
+	};
+	"objectVersion" = "56";
+	"objects" = {
+		"EE5CB0F992DE6CA79BFD8F5C" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Sources/QuotaBar/CodexClient.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"576EE4126F9DD396E33D26AB" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Sources/QuotaBar/DashboardView.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"11DF0FB57A4D891C47634BC5" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Sources/QuotaBar/QuotaBarApp.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"3F8AA653F926606A29BC7715" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Sources/QuotaBar/QuotaStyle.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"00E13FCB5BFE399E73401392" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Sources/QuotaBar/SettingsView.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"D7B8848BFE13A48ADE21490A" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Sources/QuotaBar/SnapshotStore.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"B92DDCEF8DE9CF2DE85E1C5F" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Sources/QuotaBar/UsageModel.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"87BE63EAC5AFD656E93A681C" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Sources/QuotaCore/UsageSnapshot.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"510CC08ED59D43D3DD35AFB3" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "Sources/QuotaWidgets/QuotaWidget.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"5B04B2273026590A440D27C9" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "folder.assetcatalog";
+			"path" = "Assets.xcassets";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"C861055D6A965CC7DBDDD8F0" = {
+			"isa" = "PBXFileReference";
+			"explicitFileType" = "wrapper.app-extension";
+			"includeInIndex" = "0";
+			"path" = "QuotaWidgets-macOS.appex";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		"A3B0CD758C6E0244F0D09F24" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "87BE63EAC5AFD656E93A681C";
+		};
+		"22B79ED64B882F740E27B67B" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "D7B8848BFE13A48ADE21490A";
+		};
+		"032D49268A4A853DEC6DF339" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "3F8AA653F926606A29BC7715";
+		};
+		"9A9C830F06C635FE5F108673" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "510CC08ED59D43D3DD35AFB3";
+		};
+		"3FA393D7E9332C5A53734FE4" = {
+			"isa" = "PBXSourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ("A3B0CD758C6E0244F0D09F24", "22B79ED64B882F740E27B67B", "032D49268A4A853DEC6DF339", "9A9C830F06C635FE5F108673");
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"CFE0849F476BA20BD039F704" = {
+			"isa" = "PBXResourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ();
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"393CDA37A27C2D7FF9ECB57D" = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ();
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"54A839EA71207D5F7D6DE86B" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "QuotaWidgets-macOS";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "net.plumia.QuotaBar.widgets";
+				"SWIFT_VERSION" = "6.0";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+				"INFOPLIST_FILE" = "Configuration/Widget-macOS.plist";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"CODE_SIGN_ENTITLEMENTS" = "Configuration/Widget-macOS.entitlements";
+				"CURRENT_PROJECT_VERSION" = "1";
+				"MARKETING_VERSION" = "0.1.0";
+				"SDKROOT" = "macosx";
+				"SUPPORTED_PLATFORMS" = "macosx";
+				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"LD_RUNPATH_SEARCH_PATHS" = ("$(inherited)", "@executable_path/../Frameworks", "@executable_path/Frameworks");
+				"ENABLE_HARDENED_RUNTIME" = "YES";
+				"SWIFT_STRICT_CONCURRENCY" = "complete";
+				"APPLICATION_EXTENSION_API_ONLY" = "YES";
+				"SKIP_INSTALL" = "YES";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+			};
+			"name" = "Debug";
+		};
+		"A2F319764EC92D201B0F5C4F" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "QuotaWidgets-macOS";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "net.plumia.QuotaBar.widgets";
+				"SWIFT_VERSION" = "6.0";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+				"INFOPLIST_FILE" = "Configuration/Widget-macOS.plist";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"CODE_SIGN_ENTITLEMENTS" = "Configuration/Widget-macOS.entitlements";
+				"CURRENT_PROJECT_VERSION" = "1";
+				"MARKETING_VERSION" = "0.1.0";
+				"SDKROOT" = "macosx";
+				"SUPPORTED_PLATFORMS" = "macosx";
+				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"LD_RUNPATH_SEARCH_PATHS" = ("$(inherited)", "@executable_path/../Frameworks", "@executable_path/Frameworks");
+				"ENABLE_HARDENED_RUNTIME" = "YES";
+				"SWIFT_STRICT_CONCURRENCY" = "complete";
+				"APPLICATION_EXTENSION_API_ONLY" = "YES";
+				"SKIP_INSTALL" = "YES";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
+			};
+			"name" = "Release";
+		};
+		"B5E34A54AEA0640EC96FD6E6" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = ("54A839EA71207D5F7D6DE86B", "A2F319764EC92D201B0F5C4F");
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+		};
+		"470C998EBD678A1C76511344" = {
+			"isa" = "PBXNativeTarget";
+			"buildConfigurationList" = "B5E34A54AEA0640EC96FD6E6";
+			"buildPhases" = ("3FA393D7E9332C5A53734FE4", "393CDA37A27C2D7FF9ECB57D", "CFE0849F476BA20BD039F704");
+			"buildRules" = ();
+			"dependencies" = ();
+			"name" = "QuotaWidgets-macOS";
+			"productName" = "QuotaWidgets-macOS";
+			"productReference" = "C861055D6A965CC7DBDDD8F0";
+			"productType" = "com.apple.product-type.app-extension";
+		};
+		"EF6FC3C623DCDFACC41A8E34" = {
+			"isa" = "PBXFileReference";
+			"explicitFileType" = "wrapper.application";
+			"includeInIndex" = "0";
+			"path" = "QuotaBar-macOS.app";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		"1FD89C582AB864E4760214E4" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "87BE63EAC5AFD656E93A681C";
+		};
+		"B2BBD289F8242836D7F05AA6" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "EE5CB0F992DE6CA79BFD8F5C";
+		};
+		"2ACC00CA13DBCFF656DAC7D7" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "576EE4126F9DD396E33D26AB";
+		};
+		"D7EEC6438EB833E968C782D2" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "11DF0FB57A4D891C47634BC5";
+		};
+		"BA9E8FB0139C2A2A734EE13C" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "3F8AA653F926606A29BC7715";
+		};
+		"0FD9058BB71858FDD04B0E99" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "00E13FCB5BFE399E73401392";
+		};
+		"196F08D449367B81FF091AD8" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "D7B8848BFE13A48ADE21490A";
+		};
+		"A6A4E13A71C78B4F9E42267D" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "B92DDCEF8DE9CF2DE85E1C5F";
+		};
+		"7628A05FC65ADCAB883A15DA" = {
+			"isa" = "PBXSourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ("1FD89C582AB864E4760214E4", "B2BBD289F8242836D7F05AA6", "2ACC00CA13DBCFF656DAC7D7", "D7EEC6438EB833E968C782D2", "BA9E8FB0139C2A2A734EE13C", "0FD9058BB71858FDD04B0E99", "196F08D449367B81FF091AD8", "A6A4E13A71C78B4F9E42267D");
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"C4B0120EAF8821CF7F7DD769" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "5B04B2273026590A440D27C9";
+		};
+		"BB458C6BD460CE37963E7B75" = {
+			"isa" = "PBXResourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ("C4B0120EAF8821CF7F7DD769");
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"533A4DBDE8E6F516750DDB3B" = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ();
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"50FA60F5C74567ECEFEB046F" = {
+			"isa" = "PBXContainerItemProxy";
+			"containerPortal" = "98F54143AB4E86B28C3AFEE0";
+			"proxyType" = "1";
+			"remoteGlobalIDString" = "470C998EBD678A1C76511344";
+			"remoteInfo" = "QuotaWidgets-macOS";
+		};
+		"80A6E4EF84CCA3326D8E115A" = {
+			"isa" = "PBXTargetDependency";
+			"target" = "470C998EBD678A1C76511344";
+			"targetProxy" = "50FA60F5C74567ECEFEB046F";
+		};
+		"53DF22B726FF5E8EDB9208EE" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "C861055D6A965CC7DBDDD8F0";
+			"settings" = {
+				"ATTRIBUTES" = ("RemoveHeadersOnCopy");
+			};
+		};
+		"6EC56492B5789654B93ECC78" = {
+			"isa" = "PBXCopyFilesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"dstPath" = "";
+			"dstSubfolderSpec" = "13";
+			"files" = ("53DF22B726FF5E8EDB9208EE");
+			"name" = "Embed App Extensions";
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"9912E0C75F91B022B4E16272" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "QuotaBar-macOS";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "net.plumia.QuotaBar";
+				"SWIFT_VERSION" = "6.0";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+				"INFOPLIST_FILE" = "Configuration/App-macOS.plist";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"CODE_SIGN_ENTITLEMENTS" = "Configuration/App-macOS.entitlements";
+				"CURRENT_PROJECT_VERSION" = "1";
+				"MARKETING_VERSION" = "0.1.0";
+				"SDKROOT" = "macosx";
+				"SUPPORTED_PLATFORMS" = "macosx";
+				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"LD_RUNPATH_SEARCH_PATHS" = ("$(inherited)", "@executable_path/../Frameworks", "@executable_path/Frameworks");
+				"ENABLE_HARDENED_RUNTIME" = "YES";
+				"SWIFT_STRICT_CONCURRENCY" = "complete";
+				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+			};
+			"name" = "Debug";
+		};
+		"8F24A42F5D8BB80F75177677" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "QuotaBar-macOS";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "net.plumia.QuotaBar";
+				"SWIFT_VERSION" = "6.0";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+				"INFOPLIST_FILE" = "Configuration/App-macOS.plist";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"CODE_SIGN_ENTITLEMENTS" = "Configuration/App-macOS.entitlements";
+				"CURRENT_PROJECT_VERSION" = "1";
+				"MARKETING_VERSION" = "0.1.0";
+				"SDKROOT" = "macosx";
+				"SUPPORTED_PLATFORMS" = "macosx";
+				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"LD_RUNPATH_SEARCH_PATHS" = ("$(inherited)", "@executable_path/../Frameworks", "@executable_path/Frameworks");
+				"ENABLE_HARDENED_RUNTIME" = "YES";
+				"SWIFT_STRICT_CONCURRENCY" = "complete";
+				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
+			};
+			"name" = "Release";
+		};
+		"4ECF9EB3D142FDD928BA1205" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = ("9912E0C75F91B022B4E16272", "8F24A42F5D8BB80F75177677");
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+		};
+		"BA86D73C5F4F3BA413FE616E" = {
+			"isa" = "PBXNativeTarget";
+			"buildConfigurationList" = "4ECF9EB3D142FDD928BA1205";
+			"buildPhases" = ("7628A05FC65ADCAB883A15DA", "533A4DBDE8E6F516750DDB3B", "BB458C6BD460CE37963E7B75", "6EC56492B5789654B93ECC78");
+			"buildRules" = ();
+			"dependencies" = ("80A6E4EF84CCA3326D8E115A");
+			"name" = "QuotaBar-macOS";
+			"productName" = "QuotaBar-macOS";
+			"productReference" = "EF6FC3C623DCDFACC41A8E34";
+			"productType" = "com.apple.product-type.application";
+		};
+		"B42D1F9871CC26EDA2058610" = {
+			"isa" = "PBXFileReference";
+			"explicitFileType" = "wrapper.app-extension";
+			"includeInIndex" = "0";
+			"path" = "QuotaWidgets-iOS.appex";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		"ECA0582E6CF5ECE620DC23EB" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "87BE63EAC5AFD656E93A681C";
+		};
+		"D5FDEFDCC679305CE40BB562" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "D7B8848BFE13A48ADE21490A";
+		};
+		"26B82CC50D9FFD3A5506898F" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "3F8AA653F926606A29BC7715";
+		};
+		"C915E856CAB8B347442D61DC" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "510CC08ED59D43D3DD35AFB3";
+		};
+		"E09AA80E6E0C7C06D131926B" = {
+			"isa" = "PBXSourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ("ECA0582E6CF5ECE620DC23EB", "D5FDEFDCC679305CE40BB562", "26B82CC50D9FFD3A5506898F", "C915E856CAB8B347442D61DC");
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"BA9678F963AD5C4972AE228D" = {
+			"isa" = "PBXResourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ();
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"E14EBCBA89BADCE14CBBEE00" = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ();
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"98B4551E4360E0BC412A3AA7" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "QuotaWidgets-iOS";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "net.plumia.QuotaBar.widgets";
+				"SWIFT_VERSION" = "6.0";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+				"INFOPLIST_FILE" = "Configuration/Widget-iOS.plist";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"CODE_SIGN_ENTITLEMENTS" = "Configuration/Widget-iOS.entitlements";
+				"CURRENT_PROJECT_VERSION" = "1";
+				"MARKETING_VERSION" = "0.1.0";
+				"SDKROOT" = "iphoneos";
+				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
+				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"LD_RUNPATH_SEARCH_PATHS" = ("$(inherited)", "@executable_path/../Frameworks", "@executable_path/Frameworks");
+				"ENABLE_HARDENED_RUNTIME" = "YES";
+				"SWIFT_STRICT_CONCURRENCY" = "complete";
+				"APPLICATION_EXTENSION_API_ONLY" = "YES";
+				"SKIP_INSTALL" = "YES";
+				"TARGETED_DEVICE_FAMILY" = "1,2";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+			};
+			"name" = "Debug";
+		};
+		"E1BB5F5C6CFBF7B1DD806E18" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "QuotaWidgets-iOS";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "net.plumia.QuotaBar.widgets";
+				"SWIFT_VERSION" = "6.0";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+				"INFOPLIST_FILE" = "Configuration/Widget-iOS.plist";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"CODE_SIGN_ENTITLEMENTS" = "Configuration/Widget-iOS.entitlements";
+				"CURRENT_PROJECT_VERSION" = "1";
+				"MARKETING_VERSION" = "0.1.0";
+				"SDKROOT" = "iphoneos";
+				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
+				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"LD_RUNPATH_SEARCH_PATHS" = ("$(inherited)", "@executable_path/../Frameworks", "@executable_path/Frameworks");
+				"ENABLE_HARDENED_RUNTIME" = "YES";
+				"SWIFT_STRICT_CONCURRENCY" = "complete";
+				"APPLICATION_EXTENSION_API_ONLY" = "YES";
+				"SKIP_INSTALL" = "YES";
+				"TARGETED_DEVICE_FAMILY" = "1,2";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
+			};
+			"name" = "Release";
+		};
+		"C56F3C3E23B160AA5AAF59AD" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = ("98B4551E4360E0BC412A3AA7", "E1BB5F5C6CFBF7B1DD806E18");
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+		};
+		"16AC67EE5E4D83EF9A2A002F" = {
+			"isa" = "PBXNativeTarget";
+			"buildConfigurationList" = "C56F3C3E23B160AA5AAF59AD";
+			"buildPhases" = ("E09AA80E6E0C7C06D131926B", "E14EBCBA89BADCE14CBBEE00", "BA9678F963AD5C4972AE228D");
+			"buildRules" = ();
+			"dependencies" = ();
+			"name" = "QuotaWidgets-iOS";
+			"productName" = "QuotaWidgets-iOS";
+			"productReference" = "B42D1F9871CC26EDA2058610";
+			"productType" = "com.apple.product-type.app-extension";
+		};
+		"318F33D7888F9E10FEB8C359" = {
+			"isa" = "PBXFileReference";
+			"explicitFileType" = "wrapper.application";
+			"includeInIndex" = "0";
+			"path" = "QuotaBar-iOS.app";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		"C0C2347732A5F48D3C4A1BE4" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "87BE63EAC5AFD656E93A681C";
+		};
+		"E02554573B5DFBC7DECF648E" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "EE5CB0F992DE6CA79BFD8F5C";
+		};
+		"0D677539EAF1934FAF0D9771" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "576EE4126F9DD396E33D26AB";
+		};
+		"293E0A04984541C745F1A6D3" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "11DF0FB57A4D891C47634BC5";
+		};
+		"BFBD105FCBC7E0086AA6F31E" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "3F8AA653F926606A29BC7715";
+		};
+		"EDBE2753F4CFFBE14D3B267D" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "00E13FCB5BFE399E73401392";
+		};
+		"310E34F9B2284A7D1FA049BB" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "D7B8848BFE13A48ADE21490A";
+		};
+		"B17BB54063D9C04131F1B9FA" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "B92DDCEF8DE9CF2DE85E1C5F";
+		};
+		"FD259A1F71037C133A192B83" = {
+			"isa" = "PBXSourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ("C0C2347732A5F48D3C4A1BE4", "E02554573B5DFBC7DECF648E", "0D677539EAF1934FAF0D9771", "293E0A04984541C745F1A6D3", "BFBD105FCBC7E0086AA6F31E", "EDBE2753F4CFFBE14D3B267D", "310E34F9B2284A7D1FA049BB", "B17BB54063D9C04131F1B9FA");
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"47B14E323766F08997D479C0" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "5B04B2273026590A440D27C9";
+		};
+		"F526AB9A8387EB244CACF370" = {
+			"isa" = "PBXResourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ("47B14E323766F08997D479C0");
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"09ACC5BCBC7688EBFC5363B7" = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = ();
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"830B47C5E8CFF7CABD51F089" = {
+			"isa" = "PBXContainerItemProxy";
+			"containerPortal" = "98F54143AB4E86B28C3AFEE0";
+			"proxyType" = "1";
+			"remoteGlobalIDString" = "16AC67EE5E4D83EF9A2A002F";
+			"remoteInfo" = "QuotaWidgets-iOS";
+		};
+		"48CD715FF73F29214759AC05" = {
+			"isa" = "PBXTargetDependency";
+			"target" = "16AC67EE5E4D83EF9A2A002F";
+			"targetProxy" = "830B47C5E8CFF7CABD51F089";
+		};
+		"0CA10099BA07BC1F81E6281A" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "B42D1F9871CC26EDA2058610";
+			"settings" = {
+				"ATTRIBUTES" = ("RemoveHeadersOnCopy");
+			};
+		};
+		"2C17C1C19BC1C1C6C2A93756" = {
+			"isa" = "PBXCopyFilesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"dstPath" = "";
+			"dstSubfolderSpec" = "13";
+			"files" = ("0CA10099BA07BC1F81E6281A");
+			"name" = "Embed App Extensions";
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"A195DBC1C70E48AF585C35E6" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "QuotaBar-iOS";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "net.plumia.QuotaBar";
+				"SWIFT_VERSION" = "6.0";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+				"INFOPLIST_FILE" = "Configuration/App-iOS.plist";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"CODE_SIGN_ENTITLEMENTS" = "Configuration/App-iOS.entitlements";
+				"CURRENT_PROJECT_VERSION" = "1";
+				"MARKETING_VERSION" = "0.1.0";
+				"SDKROOT" = "iphoneos";
+				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
+				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"LD_RUNPATH_SEARCH_PATHS" = ("$(inherited)", "@executable_path/../Frameworks", "@executable_path/Frameworks");
+				"ENABLE_HARDENED_RUNTIME" = "YES";
+				"SWIFT_STRICT_CONCURRENCY" = "complete";
+				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
+				"TARGETED_DEVICE_FAMILY" = "1,2";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+			};
+			"name" = "Debug";
+		};
+		"D314C5DE15582D8A1ACCA58E" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "QuotaBar-iOS";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "net.plumia.QuotaBar";
+				"SWIFT_VERSION" = "6.0";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+				"INFOPLIST_FILE" = "Configuration/App-iOS.plist";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"CODE_SIGN_ENTITLEMENTS" = "Configuration/App-iOS.entitlements";
+				"CURRENT_PROJECT_VERSION" = "1";
+				"MARKETING_VERSION" = "0.1.0";
+				"SDKROOT" = "iphoneos";
+				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
+				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"LD_RUNPATH_SEARCH_PATHS" = ("$(inherited)", "@executable_path/../Frameworks", "@executable_path/Frameworks");
+				"ENABLE_HARDENED_RUNTIME" = "YES";
+				"SWIFT_STRICT_CONCURRENCY" = "complete";
+				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
+				"TARGETED_DEVICE_FAMILY" = "1,2";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
+			};
+			"name" = "Release";
+		};
+		"CC58A490763F8EBB13018448" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = ("A195DBC1C70E48AF585C35E6", "D314C5DE15582D8A1ACCA58E");
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+		};
+		"402D62654162EEC8C399BD69" = {
+			"isa" = "PBXNativeTarget";
+			"buildConfigurationList" = "CC58A490763F8EBB13018448";
+			"buildPhases" = ("FD259A1F71037C133A192B83", "09ACC5BCBC7688EBFC5363B7", "F526AB9A8387EB244CACF370", "2C17C1C19BC1C1C6C2A93756");
+			"buildRules" = ();
+			"dependencies" = ("48CD715FF73F29214759AC05");
+			"name" = "QuotaBar-iOS";
+			"productName" = "QuotaBar-iOS";
+			"productReference" = "318F33D7888F9E10FEB8C359";
+			"productType" = "com.apple.product-type.application";
+		};
+		"FBDC4F23F93125BBEEAE800C" = {
+			"isa" = "PBXGroup";
+			"children" = ("C861055D6A965CC7DBDDD8F0", "EF6FC3C623DCDFACC41A8E34", "B42D1F9871CC26EDA2058610", "318F33D7888F9E10FEB8C359");
+			"name" = "Products";
+			"sourceTree" = "<group>";
+		};
+		"B28B7AF69320201D1CF206EB" = {
+			"isa" = "PBXGroup";
+			"children" = ("EE5CB0F992DE6CA79BFD8F5C", "576EE4126F9DD396E33D26AB", "11DF0FB57A4D891C47634BC5", "3F8AA653F926606A29BC7715", "00E13FCB5BFE399E73401392", "D7B8848BFE13A48ADE21490A", "B92DDCEF8DE9CF2DE85E1C5F", "87BE63EAC5AFD656E93A681C", "510CC08ED59D43D3DD35AFB3", "5B04B2273026590A440D27C9", "FBDC4F23F93125BBEEAE800C");
+			"sourceTree" = "<group>";
+		};
+		"AB52CB08E0FDF02BF6C67C33" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"CLANG_ENABLE_MODULES" = "YES";
+				"SWIFT_VERSION" = "6.0";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf";
+			};
+			"name" = "Debug";
+		};
+		"5283471FF90C511CFE244FFF" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"CLANG_ENABLE_MODULES" = "YES";
+				"SWIFT_VERSION" = "6.0";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf-with-dsym";
+			};
+			"name" = "Release";
+		};
+		"4BA304E783CFBB9FA6E56552" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = ("AB52CB08E0FDF02BF6C67C33", "5283471FF90C511CFE244FFF");
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+		};
+		"98F54143AB4E86B28C3AFEE0" = {
+			"isa" = "PBXProject";
+			"attributes" = {
+				"LastUpgradeCheck" = "2600";
+				"BuildIndependentTargetsInParallel" = "YES";
+			};
+			"buildConfigurationList" = "4BA304E783CFBB9FA6E56552";
+			"compatibilityVersion" = "Xcode 14.0";
+			"developmentRegion" = "fr";
+			"hasScannedForEncodings" = "0";
+			"knownRegions" = ("fr", "en", "Base");
+			"mainGroup" = "B28B7AF69320201D1CF206EB";
+			"productRefGroup" = "FBDC4F23F93125BBEEAE800C";
+			"projectDirPath" = "";
+			"projectRoot" = "";
+			"targets" = ("470C998EBD678A1C76511344", "BA86D73C5F4F3BA413FE616E", "16AC67EE5E4D83EF9A2A002F", "402D62654162EEC8C399BD69");
+		};
+	};
+	"rootObject" = "98F54143AB4E86B28C3AFEE0";
+}

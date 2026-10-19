@@ -1,0 +1,24 @@
+# Build products and local tooling
+.build/
+build/
+DerivedData/
+.swiftpm/
+xcuserdata/
+*.xcuserstate
+.DS_Store
+.idea/
+.vscode/
+.codex/
+.agents/
+
+# Local authentication, signing material and diagnostics
+.env
+.env.*
+auth.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile
+*.log
