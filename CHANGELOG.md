@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1 — 2026-10-19
+
+- Fix the macOS menu bar showing only an icon: use a text-only menu bar item so all remaining quota percentages stay visible without clicking.
+- Preserve automatic refresh and access to the details panel.
+
 ## 0.1.0 — 2026-10-19
 
 Initial public source release.

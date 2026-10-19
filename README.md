@@ -2,7 +2,7 @@
 
 Native SwiftUI quota monitor for **macOS 14+** and **iOS/iPadOS 17+**. View every quota window directly in the macOS menu bar, with small and medium WidgetKit widgets and an optional iCloud companion.
 
-**Version: 0.1.0 — initial public source release.** The interface is currently in French.
+**Version: 0.1.1 — public source preview.** The interface is currently in French.
 
 QuotaBar displays the remaining **ChatGPT subscription quotas used by Codex**, not an exact token balance or every limit across ChatGPT features. Reading quotas does not start a model turn.
 

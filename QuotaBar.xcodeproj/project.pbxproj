@@ -118,7 +118,7 @@
 				"CODE_SIGN_STYLE" = "Automatic";
 				"CODE_SIGN_ENTITLEMENTS" = "Configuration/Widget-macOS.entitlements";
 				"CURRENT_PROJECT_VERSION" = "1";
-				"MARKETING_VERSION" = "0.1.0";
+				"MARKETING_VERSION" = "0.1.1";
 				"SDKROOT" = "macosx";
 				"SUPPORTED_PLATFORMS" = "macosx";
 				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
@@ -143,7 +143,7 @@
 				"CODE_SIGN_STYLE" = "Automatic";
 				"CODE_SIGN_ENTITLEMENTS" = "Configuration/Widget-macOS.entitlements";
 				"CURRENT_PROJECT_VERSION" = "1";
-				"MARKETING_VERSION" = "0.1.0";
+				"MARKETING_VERSION" = "0.1.1";
 				"SDKROOT" = "macosx";
 				"SUPPORTED_PLATFORMS" = "macosx";
 				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
@@ -274,7 +274,7 @@
 				"CODE_SIGN_STYLE" = "Automatic";
 				"CODE_SIGN_ENTITLEMENTS" = "Configuration/App-macOS.entitlements";
 				"CURRENT_PROJECT_VERSION" = "1";
-				"MARKETING_VERSION" = "0.1.0";
+				"MARKETING_VERSION" = "0.1.1";
 				"SDKROOT" = "macosx";
 				"SUPPORTED_PLATFORMS" = "macosx";
 				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
@@ -298,7 +298,7 @@
 				"CODE_SIGN_STYLE" = "Automatic";
 				"CODE_SIGN_ENTITLEMENTS" = "Configuration/App-macOS.entitlements";
 				"CURRENT_PROJECT_VERSION" = "1";
-				"MARKETING_VERSION" = "0.1.0";
+				"MARKETING_VERSION" = "0.1.1";
 				"SDKROOT" = "macosx";
 				"SUPPORTED_PLATFORMS" = "macosx";
 				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
@@ -380,7 +380,7 @@
 				"CODE_SIGN_STYLE" = "Automatic";
 				"CODE_SIGN_ENTITLEMENTS" = "Configuration/Widget-iOS.entitlements";
 				"CURRENT_PROJECT_VERSION" = "1";
-				"MARKETING_VERSION" = "0.1.0";
+				"MARKETING_VERSION" = "0.1.1";
 				"SDKROOT" = "iphoneos";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
@@ -406,7 +406,7 @@
 				"CODE_SIGN_STYLE" = "Automatic";
 				"CODE_SIGN_ENTITLEMENTS" = "Configuration/Widget-iOS.entitlements";
 				"CURRENT_PROJECT_VERSION" = "1";
-				"MARKETING_VERSION" = "0.1.0";
+				"MARKETING_VERSION" = "0.1.1";
 				"SDKROOT" = "iphoneos";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
@@ -538,7 +538,7 @@
 				"CODE_SIGN_STYLE" = "Automatic";
 				"CODE_SIGN_ENTITLEMENTS" = "Configuration/App-iOS.entitlements";
 				"CURRENT_PROJECT_VERSION" = "1";
-				"MARKETING_VERSION" = "0.1.0";
+				"MARKETING_VERSION" = "0.1.1";
 				"SDKROOT" = "iphoneos";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"MACOSX_DEPLOYMENT_TARGET" = "14.0";
@@ -563,7 +563,7 @@
 				"CODE_SIGN_STYLE" = "Automatic";
 				"CODE_SIGN_ENTITLEMENTS" = "Configuration/App-iOS.entitlements";
 				"CURRENT_PROJECT_VERSION" = "1";
-				"MARKETING_VERSION" = "0.1.0";
+				"MARKETING_VERSION" = "0.1.1";
 				"SDKROOT" = "iphoneos";
 				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
 				"MACOSX_DEPLOYMENT_TARGET" = "14.0";

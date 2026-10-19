@@ -37,3 +37,9 @@ swift test
 Les fenêtres du groupe sélectionné sont affichées ensemble (exemple : `5 h 72 % · 7 j 84 %`). La lecture se fait automatiquement toutes les 30 secondes après la fin de la lecture précédente, sans ouverture du panneau. Ce rafraîchissement est quasi temps réel et dépend de la disponibilité et du délai de mise à jour de Codex. Les échéances dépassées et les lectures trop anciennes affichent des tirets ; un échec de lecture ajoute un avertissement. Les demandes de rafraîchissement WidgetKit sont regroupées quand les quotas ne changent pas.
 
 Contrôle du rafraîchissement automatique : version finale relancée, lectures réussies au lancement et au cycle suivant, sans ouverture du panneau. Les 14 tests ainsi que les compilations macOS Release et iOS Simulator réussissent après cette modification.
+
+## 0.1.1 — menu bar rendering correction
+
+The 0.1.0 runtime checks confirmed successful quota reads and cache updates but did not validate visible text. A user report confirmed that only the icon appeared. The image-based MenuBarExtra initializer uses its title for accessibility; 0.1.1 uses the text-only initializer instead.
+
+The macOS Release build succeeded, version 0.1.1 was launched in place of the previous instance, and live quota reads succeeded. Automated native UI inspection was unreliable and did not provide visual confirmation of the final menu bar. User confirmation remains required for the visible result (issue #1).

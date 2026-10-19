@@ -18,8 +18,9 @@ struct QuotaBarApp: App {
     #endif
     #if os(macOS)
     var body: some Scene {
-        MenuBarExtra(model.menuBarTitle,
-                     systemImage: "circle.hexagongrid.fill") {
+        // The image-based initializer renders only the icon; its title is for
+        // accessibility. Use the text initializer to keep quota values visible.
+        MenuBarExtra(model.menuBarTitle) {
             DashboardView(model: model, compact: true).frame(width: 360, height: 650)
         }
         .menuBarExtraStyle(.window)
