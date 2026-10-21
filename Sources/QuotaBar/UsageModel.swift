@@ -120,7 +120,9 @@ final class UsageModel {
         }
         let panel = NSOpenPanel()
         panel.title = "Autoriser les données du widget QuotaBar"
-        panel.message = "Autorise uniquement le dossier group.net.plumia.QuotaBar présélectionné. Il contient les quotas, sans identifiants de connexion."
+        panel.message = SnapshotStore.isLocalBuild
+            ? "Autorise le dossier QuotaBar présélectionné, dans le stockage du widget. Il contient uniquement les quotas, sans identifiants de connexion."
+            : "Autorise uniquement le dossier group.net.plumia.QuotaBar présélectionné. Il contient les quotas, sans identifiants de connexion."
         panel.prompt = "Autoriser ce dossier"
         panel.canChooseDirectories = true
         panel.canChooseFiles = false

@@ -28,8 +28,11 @@ iCloud delivery is asynchronous. The iOS app receives changes while active and w
 
 `Scripts/check.sh` uses unsigned builds to validate compilation only. Such bundles lack effective sandbox entitlements, and PluginKit rejects the widget.
 
-`Scripts/build-macos.sh` instead applies local ad-hoc signatures, including the widget sandbox entitlement. `Scripts/install-macos.sh` registers the containing app and widget from `~/Applications`. Local PluginKit registration has been verified without an Apple development certificate. This is not a notarized distribution build and does not enable iCloud; gallery visibility has been confirmed by the user. On the test Mac, shared-container writes were denied with Cocoa error 513 under the local signature, so the local widget cannot yet be considered a working quota display. Version 0.1.3 adds **Réglages → Widget → Autoriser les données du widget…** to test an explicit, user-selected folder grant through the standard macOS panel. Select only the preselected `group.net.plumia.QuotaBar` folder. The app verifies an actual write/read-back and stores a security-scoped bookmark locally. This authorization flow and real widget delivery are not yet functionally confirmed; a Developer account has not been proven mandatory for local use.
+`Scripts/build-macos.sh` applies local ad-hoc signatures, including the widget sandbox entitlement. `Scripts/install-macos.sh` registers the containing app and widget from `~/Applications`. Local PluginKit registration and gallery visibility have been confirmed without an Apple development certificate.
 
+The local macOS build stores quota snapshots in the widget’s own sandbox Application Support folder. It omits App Group entitlements from both local signatures because an unprovisioned group denied the widget read access even after the host received a folder grant. The widget locates and creates its own data folder through Foundation; the nonsandboxed host writes to that local extension folder. Actual host writes and widget timeline reads have now succeeded on the test Mac, without another permission grant. If macOS denies host access on another installation, use **Réglages → Widget → Autoriser les données du widget…** and select only the preselected `QuotaBar` folder. That flow verifies writing/read-back and stores a local security-scoped bookmark.
+
+This local workflow is not a notarized distribution build and does not enable iCloud. Provisioned builds and iOS keep the App Group transport described below.
 For iCloud, iPhone installation and a provisioned distribution build, configure Apple-team signing:
 
 Choose the same Apple Developer team for all four targets in **Signing & Capabilities**:
@@ -52,7 +55,7 @@ Launch at login uses `SMAppService`. Enable it from a stable, signed app install
 
 - QuotaBar communicates with the installed CLI through local standard input/output using the official account protocol. It does not directly read `auth.json` or store passwords or authentication tokens.
 - The local CLI manages its own authentication outside this repository.
-- Quota snapshots are written atomically to a JSON file in the App Group container; app preferences remain local. Optional iCloud synchronization contains quota values and timestamps only.
+- Quota snapshots are written atomically to a JSON file in the widget’s own sandbox for local macOS builds, or in the App Group container for provisioned builds and iOS; app preferences remain local. Optional iCloud synchronization contains quota values and timestamps only.
 - Build products, local environments, authentication files, signing material, user-specific Xcode metadata and diagnostics are excluded from Git.
 - The optional `probe.sh` script prints remaining quota values, not authentication tokens. Do not publish your personal probe output or local diagnostic files.
 
@@ -114,7 +117,7 @@ The project generator rewrites project settings and entitlements. Preserve any c
 
 Fourteen unit/transport tests pass. Unsigned macOS and iOS Simulator builds pass, including both widget extensions. Automatic reading and local quota persistence have been verified in the running Mac app with the panel closed.
 
-Local widget registration is now verified. Gallery visibility is confirmed; on-desktop quota display, cross-device iCloud synchronization, physical iPhone installation, interactive sign-in and launch at login still require functional validation. iCloud and iPhone deployment additionally require configured Apple-team signing. No signed/notarized binary is distributed. See [VALIDATION.md](VALIDATION.md) for the detailed development record and [CHANGELOG.md](CHANGELOG.md) for version history.
+Local widget registration, gallery visibility, and actual quota delivery to the widget timeline are verified. Visual confirmation of the updated on-desktop display, cross-device iCloud synchronization, physical iPhone installation, interactive sign-in and launch at login still require functional validation. iCloud and iPhone deployment additionally require configured Apple-team signing. No signed/notarized binary is distributed. See [VALIDATION.md](VALIDATION.md) for the detailed development record and [CHANGELOG.md](CHANGELOG.md) for version history.
 
 ## References
 

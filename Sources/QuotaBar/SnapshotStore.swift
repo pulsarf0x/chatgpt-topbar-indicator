@@ -7,10 +7,31 @@ enum SnapshotStore {
     static let groupID = "group.net.plumia.QuotaBar"
     static let key = "usageSnapshot.v1"
     private static let logger = Logger(subsystem: "net.plumia.QuotaBar", category: "widget-cache")
-    static var containerURL: URL? {
-        FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupID)
+    static var isLocalBuild: Bool {
+        Bundle.main.object(forInfoDictionaryKey: "QuotaBarLocalBuild") as? Bool == true
     }
-    private static let bookmarkKey = "widgetContainerAccess.v1"
+    static var containerURL: URL? {
+        #if os(macOS)
+        if isLocalBuild {
+            if Bundle.main.bundleIdentifier == "net.plumia.QuotaBar.widgets" {
+                // Ask Foundation for the extension's own sandbox location.
+                let directory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+                    .first?.appendingPathComponent("QuotaBar", isDirectory: true)
+                if let directory {
+                    do { try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true) }
+                    catch { logger.error("Local widget directory creation failed: code=\((error as NSError).code, privacy: .public)") }
+                }
+                return directory
+            }
+            // The nonsandboxed host asks for explicit access if macOS requires
+            // it. This location is used only by the local macOS installer.
+            return FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first?
+                .appendingPathComponent("Containers/net.plumia.QuotaBar.widgets/Data/Library/Application Support/QuotaBar", isDirectory: true)
+        }
+        #endif
+        return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupID)
+    }
+    private static var bookmarkKey: String { isLocalBuild ? "localWidgetContainerAccess.v1" : "widgetContainerAccess.v1" }
     private static var accessURL: URL? {
         #if os(macOS)
         if let data = UserDefaults.standard.data(forKey: bookmarkKey) {
@@ -49,11 +70,19 @@ enum SnapshotStore {
         let scoped = container?.startAccessingSecurityScopedResource() ?? false
         defer { if scoped { container?.stopAccessingSecurityScopedResource() } }
         #endif
-        if let url = container?.appendingPathComponent("usageSnapshot.v1.json"), let data = try? Data(contentsOf: url),
-           let snapshot = try? JSONDecoder().decode(UsageSnapshot.self, from: data) {
-            return snapshot
+        if let url = container?.appendingPathComponent("usageSnapshot.v1.json") {
+            do {
+                let data = try Data(contentsOf: url)
+                return try JSONDecoder().decode(UsageSnapshot.self, from: data)
+            } catch {
+                let failure = error as NSError
+                logger.error("Widget snapshot read failed: domain=\(failure.domain, privacy: .public), code=\(failure.code, privacy: .public)")
+            }
+        } else {
+            logger.error("Widget snapshot container unavailable")
         }
         // Migrate snapshots written before the shared-file transport was added.
+        if isLocalBuild { return nil }
         guard let data = UserDefaults(suiteName: groupID)?.data(forKey: key) else { return nil }
         return try? JSONDecoder().decode(UsageSnapshot.self, from: data)
     }
@@ -100,7 +129,7 @@ enum SnapshotStore {
             do { try FileManager.default.removeItem(at: url) }
             catch { logger.error("Unable to clear shared widget snapshot") }
         }
-        UserDefaults(suiteName: groupID)?.removeObject(forKey: key)
+        if !isLocalBuild { UserDefaults(suiteName: groupID)?.removeObject(forKey: key) }
         WidgetCenter.shared.reloadAllTimelines()
     }
 }

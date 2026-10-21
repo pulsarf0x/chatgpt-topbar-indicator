@@ -63,3 +63,11 @@ The error 513 was reproduced on the current installation. Omitting the host’s 
 An explicit NSOpenPanel flow now allows selection of only the existing QuotaBar App Group folder, tests actual quota-file writing/read-back, and stores a local security-scoped bookmark after successful access. Normal load/save operations use that scope. The flow is available in Widget settings and via `quotabar://authorize-widget`. It has not yet received a user grant, so it is not counted as a resolved permission or a working widget data path. Widget timeline logging distinguishes actual data availability from previews.
 
 The local macOS installer compiled and installed version 0.1.3. Gallery registration and menu-bar reading are separate from the pending authorization/widget check. A Developer account has not been established as a necessary condition for local operation.
+
+### Runtime result after the user grant
+
+The user approved the App Group folder on 21 October. The host then successfully wrote and read back live snapshots, but widget reads failed with Cocoa error 257. This proved that host authorization alone did not authorize the sandboxed widget. Repeated extension launches continued while that transport was used.
+
+The local macOS signing workflow now omits unprovisioned App Group entitlements and sets `QuotaBarLocalBuild` on both bundles. The sandboxed widget creates its own Application Support/QuotaBar folder through Foundation; the nonsandboxed host uses that extension data folder, with an optional explicit folder grant if needed. Provisioned/iOS builds retain the original App Group transport. No sandbox or system protection was disabled.
+
+After installing this correction, the host successfully wrote/read back actual fetched quotas. The installed widget logged successful snapshot consumption in its real timelines, in one stable extension process, without a further user grant. This verifies the data handoff, separately from the gallery preview. Visual desktop rendering still awaits user confirmation. Fourteen tests, the macOS Release build, and the iOS Simulator build (app and widget) pass.
