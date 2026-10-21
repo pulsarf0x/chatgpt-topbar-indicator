@@ -57,6 +57,14 @@ struct SettingsView: View {
                 if let settingsError { Text(settingsError).foregroundStyle(.orange) }
                 #endif
                 Section("Widget") {
+                    #if os(macOS)
+                    Button("Autoriser les données du widget…") { model.authorizeWidgetAccess() }
+                    Text("macOS peut demander une autorisation pour le dossier partagé du widget. Seuls les quotas et l’heure de lecture y sont écrits.")
+                        .font(.caption).foregroundStyle(.secondary)
+                    if let message = model.widgetAccessMessage {
+                        Text(message).font(.caption).foregroundStyle(.secondary)
+                    }
+                    #endif
                     Text("Ajoute le widget QuotaBar depuis la galerie de widgets. Il affiche le quota Codex et la dernière lecture du Mac. macOS et iOS décident du rythme de rafraîchissement des widgets.")
                         .font(.caption).foregroundStyle(.secondary)
                 }

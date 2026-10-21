@@ -16,6 +16,7 @@ fi
 
 # QuotaBar has no unsaved documents; quit its prior copies before updating it.
 /usr/bin/pkill -x QuotaBar-macOS || true
+/usr/bin/pkill -x QuotaWidgets-macOS || true
 for attempt in {1..20}; do
   if ! /usr/bin/pgrep -x QuotaBar-macOS >/dev/null; then break; fi
   sleep 0.1

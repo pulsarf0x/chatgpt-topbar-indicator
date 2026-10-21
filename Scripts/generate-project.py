@@ -6,6 +6,8 @@ import plistlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 VERSION = (ROOT / 'VERSION').read_text().strip()
+major, minor, patch = map(int, VERSION.split('.'))
+BUILD_NUMBER = str(major * 1_000_000 + minor * 1_000 + patch + 1)
 PROJECT = ROOT / 'QuotaBar.xcodeproj'
 PROJECT.mkdir(exist_ok=True)
 objects = {}
@@ -60,7 +62,7 @@ for platform in ['macOS', 'iOS']:
             'INFOPLIST_FILE': f'Configuration/{"Widget" if extension else "App"}-{platform}.plist',
             'CODE_SIGN_STYLE': 'Automatic',
             'CODE_SIGN_ENTITLEMENTS': f'Configuration/{"Widget" if extension else "App"}-{platform}.entitlements',
-            'CURRENT_PROJECT_VERSION': '1', 'MARKETING_VERSION': VERSION,
+            'CURRENT_PROJECT_VERSION': BUILD_NUMBER, 'MARKETING_VERSION': VERSION,
             'SDKROOT': 'macosx' if platform == 'macOS' else 'iphoneos',
             'SUPPORTED_PLATFORMS': 'macosx' if platform == 'macOS' else 'iphoneos iphonesimulator',
             'MACOSX_DEPLOYMENT_TARGET': '14.0', 'IPHONEOS_DEPLOYMENT_TARGET': '17.0',

@@ -1,5 +1,6 @@
 import SwiftUI
 import WidgetKit
+import OSLog
 
 struct UsageEntry: TimelineEntry {
     let date: Date
@@ -15,6 +16,8 @@ struct UsageProvider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<UsageEntry>) -> Void) {
         let now = Date.now
         let snapshot = SnapshotStore.load()
+        Logger(subsystem: "net.plumia.QuotaBar", category: "widget-provider")
+            .notice("Widget timeline has shared quota snapshot: \(snapshot != nil, privacy: .public)")
         var dates = [now, now.addingTimeInterval(16 * 60)]
         if let snapshot {
             dates.append(snapshot.fetchedAt.addingTimeInterval(15 * 60 + 1))

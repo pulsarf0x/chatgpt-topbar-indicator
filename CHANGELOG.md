@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.3 — 2026-10-21
+
+- Add an explicit macOS folder authorization flow for the quota data folder.
+- Limit selection to that container, verify a real write/read-back, and retain a security-scoped bookmark only after successful access.
+- Derive an increasing bundle build number from VERSION so widget upgrades invalidate stale extension builds.
+- Refresh widget extension processes during local installation and log whether actual timelines receive a quota snapshot.
+- Use the widget’s own sandbox storage in local macOS builds, retaining sandbox isolation and omitting unprovisioned App Group entitlements.
+- Confirm real quota writes by the host and successful reads by widget timelines. The earlier App Group grant fixed host writes only; visual desktop confirmation remains pending.
+
 ## 0.1.2 — 2026-10-19
 
 - Seal local macOS app/widget bundles with ad-hoc signatures and apply the widget sandbox entitlement required by PluginKit.
