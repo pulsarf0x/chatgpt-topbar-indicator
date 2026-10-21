@@ -7,6 +7,11 @@ final class QuotaAppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         UsageModel.shared.start()
     }
+    func application(_ application: NSApplication, open urls: [URL]) {
+        if urls.contains(where: { $0.scheme == "quotabar" && $0.host == "authorize-widget" }) {
+            UsageModel.shared.authorizeWidgetAccess()
+        }
+    }
 }
 #endif
 

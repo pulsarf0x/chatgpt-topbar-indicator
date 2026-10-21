@@ -55,3 +55,11 @@ The local installer was run successfully for version 0.1.2; signatures verify an
 Fourteen tests pass. macOS Release build/local installation and iOS Simulator builds succeed. No widget gallery screenshot or on-desktop rendering was verified.
 
 User confirmation: after closing and reopening Edit Widgets, QuotaBar appears in the macOS gallery. This validates gallery visibility; on-desktop quota rendering remains unvalidated because shared-container writes are still denied.
+
+## 0.1.3 — explicit local folder authorization (21 October 2026)
+
+The error 513 was reproduced on the current installation. Omitting the host’s already-false sandbox entitlement did not change the result; no protection was disabled. The source keeps the original sandbox policy.
+
+An explicit NSOpenPanel flow now allows selection of only the existing QuotaBar App Group folder, tests actual quota-file writing/read-back, and stores a local security-scoped bookmark after successful access. Normal load/save operations use that scope. The flow is available in Widget settings and via `quotabar://authorize-widget`. It has not yet received a user grant, so it is not counted as a resolved permission or a working widget data path. Widget timeline logging distinguishes actual data availability from previews.
+
+The local macOS installer compiled and installed version 0.1.3. Gallery registration and menu-bar reading are separate from the pending authorization/widget check. A Developer account has not been established as a necessary condition for local operation.

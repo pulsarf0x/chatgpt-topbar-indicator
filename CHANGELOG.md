@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.3 — 2026-10-21
+
+- Add an explicit macOS folder authorization flow for the widget’s own shared container.
+- Limit selection to that container, verify a real write/read-back, and retain a security-scoped bookmark only after successful access.
+- Derive an increasing bundle build number from VERSION so widget upgrades invalidate stale extension builds.
+- Refresh widget extension processes during local installation and log whether actual timelines receive a quota snapshot.
+- The authorization flow and widget data delivery still require a successful user grant and runtime confirmation; local Developer-account requirements remain unproven.
+
 ## 0.1.2 — 2026-10-19
 
 - Seal local macOS app/widget bundles with ad-hoc signatures and apply the widget sandbox entitlement required by PluginKit.

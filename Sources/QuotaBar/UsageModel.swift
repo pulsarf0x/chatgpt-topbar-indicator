@@ -16,6 +16,7 @@ final class UsageModel {
     }
     var isRefreshing = false
     var isLoggingIn = false
+    var widgetAccessMessage: String?
     var error: String?
     var selectedBucketID: String {
         didSet { UserDefaults.standard.set(selectedBucketID, forKey: "selectedBucket") }
@@ -112,6 +113,33 @@ final class UsageModel {
     }
 
     #if os(macOS)
+    func authorizeWidgetAccess() {
+        guard let directory = SnapshotStore.containerURL, let snapshot else {
+            widgetAccessMessage = "Actualise les quotas avant d’autoriser le widget."
+            return
+        }
+        let panel = NSOpenPanel()
+        panel.title = "Autoriser les données du widget QuotaBar"
+        panel.message = "Autorise uniquement le dossier group.net.plumia.QuotaBar présélectionné. Il contient les quotas, sans identifiants de connexion."
+        panel.prompt = "Autoriser ce dossier"
+        panel.canChooseDirectories = true
+        panel.canChooseFiles = false
+        panel.canCreateDirectories = false
+        panel.allowsMultipleSelection = false
+        panel.showsHiddenFiles = true
+        panel.directoryURL = directory
+        NSApp.activate(ignoringOtherApps: true)
+        guard panel.runModal() == .OK, let url = panel.url else { return }
+        do {
+            try SnapshotStore.authorize(url, snapshot: snapshot)
+            error = nil
+            widgetAccessMessage = "Accès autorisé : les quotas ont été écrits et relus dans le dossier du widget."
+            Task { await refresh() }
+        } catch {
+            widgetAccessMessage = "L’autorisation n’a pas permis d’écrire les quotas. Vérifie le dossier sélectionné. \(error.localizedDescription)"
+        }
+    }
+
     func login() async {
         guard !isLoggingIn, !isRefreshing else { return }
         isLoggingIn = true

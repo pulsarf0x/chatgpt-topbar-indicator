@@ -2,7 +2,7 @@
 
 Native SwiftUI quota monitor for **macOS 14+** and **iOS/iPadOS 17+**. View every quota window directly in the macOS menu bar, with small and medium WidgetKit widgets and an optional iCloud companion.
 
-**Version: 0.1.2 — public source preview.** The interface is currently in French.
+**Version: 0.1.3 — public source preview.** The interface is currently in French.
 
 QuotaBar displays the remaining **ChatGPT subscription quotas used by Codex**, not an exact token balance or every limit across ChatGPT features. Reading quotas does not start a model turn.
 
@@ -28,7 +28,7 @@ iCloud delivery is asynchronous. The iOS app receives changes while active and w
 
 `Scripts/check.sh` uses unsigned builds to validate compilation only. Such bundles lack effective sandbox entitlements, and PluginKit rejects the widget.
 
-`Scripts/build-macos.sh` instead applies local ad-hoc signatures, including the widget sandbox entitlement. `Scripts/install-macos.sh` registers the containing app and widget from `~/Applications`. Local PluginKit registration has been verified without an Apple development certificate. This is not a notarized distribution build and does not enable iCloud; gallery visibility has been confirmed by the user. On the test Mac, shared-container writes were denied with Cocoa error 513 under the local signature, so the local widget cannot yet be considered a working quota display. A properly provisioned Apple-team build is the next path to validate shared-container access.
+`Scripts/build-macos.sh` instead applies local ad-hoc signatures, including the widget sandbox entitlement. `Scripts/install-macos.sh` registers the containing app and widget from `~/Applications`. Local PluginKit registration has been verified without an Apple development certificate. This is not a notarized distribution build and does not enable iCloud; gallery visibility has been confirmed by the user. On the test Mac, shared-container writes were denied with Cocoa error 513 under the local signature, so the local widget cannot yet be considered a working quota display. Version 0.1.3 adds **Réglages → Widget → Autoriser les données du widget…** to test an explicit, user-selected folder grant through the standard macOS panel. Select only the preselected `group.net.plumia.QuotaBar` folder. The app verifies an actual write/read-back and stores a security-scoped bookmark locally. This authorization flow and real widget delivery are not yet functionally confirmed; a Developer account has not been proven mandatory for local use.
 
 For iCloud, iPhone installation and a provisioned distribution build, configure Apple-team signing:
 
