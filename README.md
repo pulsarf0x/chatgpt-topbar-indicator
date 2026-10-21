@@ -2,7 +2,7 @@
 
 Native SwiftUI quota monitor for **macOS 14+** and **iOS/iPadOS 17+**. View every quota window directly in the macOS menu bar, with small and medium WidgetKit widgets and an optional iCloud companion.
 
-**Version: 0.1.3 — public source preview.** The interface is currently in French.
+**Version: 0.1.4 — public source preview.** The interface is currently in French.
 
 QuotaBar displays the remaining **ChatGPT subscription quotas used by Codex**, not an exact token balance or every limit across ChatGPT features. Reading quotas does not start a model turn.
 
@@ -15,6 +15,10 @@ QuotaBar displays the remaining **ChatGPT subscription quotas used by Codex**, n
 5. Add desktop widgets using **Edit Widgets → QuotaBar**. Widgets display the `codex` group, or the first available group, independently of the group selected for the menu bar.
 
 Failed reads add a warning to the menu bar. The panel shows all available windows, reset deadlines and the last successful read. Switching accounts also switches the local CLI account.
+
+## Appearance
+
+On macOS 26+ and iOS/iPadOS 26+, actions use native Liquid Glass button styles. The refresh controls stay in a bottom inset while quota content scrolls; the Mac dashboard uses a translucent window background and a hidden title bar. Earlier supported systems retain standard bordered controls. Native materials follow system appearance and accessibility settings. Quota figures keep stable content backgrounds, and widgets retain the system-managed WidgetKit surface.
 
 ## iPhone and iPad
 
@@ -123,3 +127,5 @@ Local widget registration, gallery visibility, and actual quota delivery to the 
 
 - [Official account protocol and quotas](https://learn.chatgpt.com/docs/app-server): `initialize`, `initialized`, `account/rateLimits/read`, `account/login/start`.
 - [Apple: creating a widget extension](https://developer.apple.com/documentation/widgetkit/creating-a-widget-extension).
+
+- [Apple: applying Liquid Glass to custom views](https://developer.apple.com/documentation/swiftui/applying-liquid-glass-to-custom-views).
