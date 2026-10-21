@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.4 — 2026-10-21
+
+- Adopt native Liquid Glass buttons on macOS 26+ and iOS/iPadOS 26+, with standard control fallbacks on older systems.
+- Keep refresh actions accessible in a bottom inset and use a translucent macOS dashboard window with a hidden title bar.
+- Preserve readable quota content, menu bar percentages and the local widget data transport.
+
 ## 0.1.3 — 2026-10-21
 
 - Add an explicit macOS folder authorization flow for the quota data folder.

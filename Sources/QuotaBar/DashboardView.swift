@@ -27,8 +27,10 @@ struct DashboardView: View {
                                 .tracking(1.5).foregroundStyle(.secondary)
                         }
                         Spacer()
-                        Button { showingSettings = true } label: { Image(systemName: "gearshape") }
-                            .buttonStyle(.plain).foregroundStyle(.secondary)
+                        Button { showingSettings = true } label: {
+                            Image(systemName: "gearshape").frame(width: 28, height: 28)
+                        }
+                            .quotaButton().buttonBorderShape(.circle)
                             .accessibilityLabel("Réglages")
                     }
 
@@ -57,7 +59,11 @@ struct DashboardView: View {
                             }
                         }
                         .frame(maxWidth: .infinity).padding(20)
-                        .background(Color.quotaAccent.opacity(0.045), in: RoundedRectangle(cornerRadius: 20))
+                        .background(Color.quotaAccent.opacity(0.045), in: RoundedRectangle(cornerRadius: 24))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 24)
+                                .strokeBorder(.primary.opacity(0.06), lineWidth: 0.5)
+                        }
 
                         VStack(spacing: 20) {
                             ForEach(Array(bucket.windows.enumerated()), id: \.offset) { _, window in
@@ -87,27 +93,6 @@ struct DashboardView: View {
                         Label("Termine la connexion dans ton navigateur…", systemImage: "safari")
                             .font(.caption).foregroundStyle(.secondary)
                     }
-                    HStack {
-                        Button {
-                            Task { await model.refresh() }
-                        } label: {
-                            HStack(spacing: 7) {
-                                if model.isRefreshing { ProgressView().controlSize(.small) }
-                                else { Image(systemName: "arrow.clockwise") }
-                                Text("Actualiser")
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 5)
-                        }
-                        .buttonStyle(.borderedProminent).tint(.quotaAccent)
-                        .disabled(model.isRefreshing || model.isLoggingIn)
-                        #if os(macOS)
-                        if compact {
-                            Button { NSApplication.shared.terminate(nil) } label: { Image(systemName: "power") }
-                                .buttonStyle(.bordered).help("Quitter QuotaBar")
-                        }
-                        #endif
-                    }
                     #if os(macOS)
                     if compact {
                         Button("Ouvrir la fenêtre") { openWindow(id: "dashboard") }
@@ -123,6 +108,38 @@ struct DashboardView: View {
                 .frame(maxWidth: .infinity)
             }
         }
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            QuotaGlassGroup {
+                HStack(spacing: 12) {
+                    Button { Task { await model.refresh() } } label: {
+                        HStack(spacing: 7) {
+                            if model.isRefreshing { ProgressView().controlSize(.small) }
+                            else { Image(systemName: "arrow.clockwise") }
+                            Text("Actualiser")
+                        }
+                        .frame(maxWidth: .infinity, minHeight: 26)
+                    }
+                    .quotaButton(prominent: true).tint(.quotaAccent)
+                    .buttonBorderShape(.capsule)
+                    .disabled(model.isRefreshing || model.isLoggingIn)
+                    #if os(macOS)
+                    if compact {
+                        Button { NSApplication.shared.terminate(nil) } label: {
+                            Image(systemName: "power").frame(width: 26, height: 26)
+                        }
+                        .quotaButton().buttonBorderShape(.circle)
+                        .help("Quitter QuotaBar").accessibilityLabel("Quitter QuotaBar")
+                    }
+                    #endif
+                }
+                .controlSize(.large)
+            }
+            .padding(.horizontal, compact ? 22 : 28)
+            .padding(.top, 12).padding(.bottom, compact ? 18 : 22)
+            .frame(maxWidth: 500)
+            .frame(maxWidth: .infinity)
+        }
+        .quotaWindowBackground(enabled: !compact)
         .onAppear { model.start() }
         .sheet(isPresented: $showingSettings) { SettingsView(model: model) }
     }
@@ -135,7 +152,8 @@ struct DashboardView: View {
             Text("Connecte ton compte ChatGPT pour garder un œil sur les quotas de Codex, directement dans la barre de menus.")
                 .font(.subheadline).foregroundStyle(.secondary).multilineTextAlignment(.center)
             Button("Se connecter avec ChatGPT") { Task { await model.login() } }
-                .buttonStyle(.bordered).disabled(model.isLoggingIn || model.isRefreshing)
+                .quotaButton().buttonBorderShape(.capsule)
+                .disabled(model.isLoggingIn || model.isRefreshing)
             #else
             Text("Ouvre QuotaBar sur ton Mac et active la synchronisation iCloud sur les deux appareils avec le même compte Apple.")
                 .font(.subheadline).foregroundStyle(.secondary).multilineTextAlignment(.center)

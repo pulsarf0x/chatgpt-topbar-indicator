@@ -74,7 +74,11 @@ struct SettingsView: View {
             }
             .formStyle(.grouped)
             .navigationTitle("Réglages")
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Terminé") { dismiss() } } }
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Terminé") { dismiss() }.quotaButton(prominent: true)
+                }
+            }
         }
         #if os(macOS)
         .frame(width: 510, height: 580)

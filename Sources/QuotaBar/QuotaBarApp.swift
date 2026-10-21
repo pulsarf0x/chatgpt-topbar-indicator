@@ -34,6 +34,7 @@ struct QuotaBarApp: App {
                 .onOpenURL { _ in NSApp.activate(ignoringOtherApps: true) }
         }
         .defaultSize(width: 440, height: 740)
+        .windowStyle(.hiddenTitleBar)
     }
     #else
     @Environment(\.scenePhase) private var scenePhase

@@ -1,5 +1,40 @@
 import SwiftUI
 
+// Native glass is reserved for controls; quota content keeps a stable contrast.
+extension View {
+    @ViewBuilder
+    func quotaButton(prominent: Bool = false) -> some View {
+        if #available(macOS 26, iOS 26, *) {
+            if prominent { self.buttonStyle(.glassProminent) }
+            else { self.buttonStyle(.glass) }
+        } else {
+            if prominent { self.buttonStyle(.borderedProminent) }
+            else { self.buttonStyle(.bordered) }
+        }
+    }
+
+    @ViewBuilder
+    func quotaWindowBackground(enabled: Bool) -> some View {
+        #if os(macOS)
+        if #available(macOS 15, *), enabled {
+            self.containerBackground(.thinMaterial, for: .window)
+        } else { self }
+        #else
+        self
+        #endif
+    }
+}
+
+struct QuotaGlassGroup<Content: View>: View {
+    @ViewBuilder var content: () -> Content
+
+    var body: some View {
+        if #available(macOS 26, iOS 26, *) {
+            GlassEffectContainer(spacing: 16) { content() }
+        } else { content() }
+    }
+}
+
 extension Color {
     static let quotaAccent = Color(red: 0.49, green: 0.40, blue: 0.95)
     static func quotaLevel(_ remaining: Double) -> Color {
